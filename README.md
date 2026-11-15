@@ -32,7 +32,7 @@ flowchart LR
 ```
 
 1. **IA, una vez por instrumento.** Nemotron VL entrega cada número de la escala con su posición (0-1000) y además una estimación propia de la lectura.
-2. **Geometría.** Con tríos de números, RANSAC ajusta la circunferencia del dial y una recta ángulo-valor. Los números que no calzan (una segunda escala, un logo) quedan fuera.
+2. **Geometría.** Con tríos de números, RANSAC ajusta la circunferencia de la escala y una recta ángulo-valor. Los números que no calzan (una segunda escala, un logo) quedan fuera.
 3. **Visión clásica.** Un barrido radial de 720 direcciones busca la línea que sale continua del eje y llega más lejos hacia la escala. Así distingue la punta del contrapeso, que también es oscuro pero se corta antes. La tolerancia lateral va en píxeles para soportar un centro estimado con algo de error. La estimación de la IA no elige la aguja: solo sirve de control.
 4. **Control cruzado.** Si la lectura geométrica y la de la IA difieren en más de 6 % del rango, la página avisa. El panel «¿La lectura está mal?» corrige y muestra el error de la lectura automática.
 5. **Cámara fija.** Con la cámara quieta, la IA calibra una sola vez y el seguimiento de la aguja corre en el navegador muchas veces por segundo, sin más llamadas.

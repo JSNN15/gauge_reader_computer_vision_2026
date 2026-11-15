@@ -11,7 +11,7 @@
     <meta property="og:title" content="Lector de instrumentos · IA de NVIDIA + visión clásica" />
     <meta
       property="og:description"
-      content="La IA lee la escala una vez, la geometría arma el dial y la visión clásica sigue la aguja. Instrumentos analógicos convertidos en datos."
+      content="La IA lee la escala una vez, la geometría la reconstruye y la visión clásica sigue la aguja. Instrumentos analógicos convertidos en datos."
     />
     <meta property="og:image" content="https://jsnn15.github.io/img/lector.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -569,9 +569,9 @@
     <header>
       <div class="in">
         <div>
-          <h1>Del dial <em>al dato</em></h1>
+          <h1>De la aguja <em>al dato</em></h1>
           <p class="sub">
-            Foto de un manómetro o termómetro de aguja. La IA lee la escala, la geometría arma el dial y la
+            Foto de un manómetro o termómetro de aguja. La IA lee los números de la escala, la geometría la reconstruye y la
             visión clásica encuentra la aguja.
           </p>
         </div>
@@ -582,7 +582,7 @@
     <main class="in">
       <div class="steps" id="steps">
         <span class="st" data-s="1"><i></i>1 · IA lee los números</span>
-        <span class="st" data-s="2"><i></i>2 · Geometría del dial</span>
+        <span class="st" data-s="2"><i></i>2 · Geometría de la escala</span>
         <span class="st" data-s="3"><i></i>3 · Barrido de la aguja</span>
         <span class="st" data-s="4"><i></i>4 · Lectura</span>
       </div>
@@ -619,7 +619,7 @@
               <dd id="k-rng">—</dd>
               <dt>Números leídos</dt>
               <dd id="k-num">—</dd>
-              <dt>Ajuste del dial</dt>
+              <dt>Ajuste de la escala</dt>
               <dd id="k-fit">—</dd>
             </dl>
             <div class="agree" id="agree">
@@ -685,7 +685,7 @@
           <div class="n">2</div>
           <b>Geometría</b
           ><span
-            >Con los números se ajusta la circunferencia del dial y la relación ángulo-valor. Un ajuste
+            >Con los números se ajusta la circunferencia de la escala y la relación ángulo-valor. Un ajuste
             robusto descarta la segunda escala.</span
           >
         </div>
@@ -1183,7 +1183,7 @@
           if (R !== result) return;
           C = calibrate(R.numeros, cv.width, cv.height);
           if (!C) {
-            $('agree').textContent = 'No alcanzó para ajustar el dial con los números leídos.';
+            $('agree').textContent = 'No alcanzó para ajustar la escala con los números leídos.';
             showMeta();
             return;
           }
@@ -1412,8 +1412,8 @@
             } else
               $('hint').textContent =
                 n < 3
-                  ? `La IA leyó ${n} ${n === 1 ? 'número' : 'números'} de la escala y necesito al menos 3. Acércate, evita reflejos y deja el dial completo en el cuadro.`
-                  : `La IA leyó ${n} números pero no forman un dial coherente (¿dos escalas o foto muy en ángulo?). Ponte de frente al instrumento.`;
+                  ? `La IA leyó ${n} ${n === 1 ? 'número' : 'números'} de la escala y necesito al menos 3. Acércate, evita reflejos y deja la carátula completa en el cuadro.`
+                  : `La IA leyó ${n} números pero no forman una escala coherente (¿dos escalas o foto muy en ángulo?). Ponte de frente al instrumento.`;
           } catch (err) {
             $('hint').textContent = 'No se pudo calibrar: ' + err.message;
           } finally {
