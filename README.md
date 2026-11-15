@@ -2,7 +2,7 @@
 
 **Foto de un manómetro o termómetro de aguja y la lectura sale en número, con alarma y registro. La IA lee la escala una vez; la geometría y la visión clásica hacen el resto.**
 
-[![Abrir la máquina](https://img.shields.io/badge/Probar-jsnn15.github.io%2Flector-ffb020?style=for-the-badge)](https://jsnn15.github.io/lector/)
+[![Abrir la herramienta](https://img.shields.io/badge/Probar-jsnn15.github.io%2Flector-ffb020?style=for-the-badge)](https://jsnn15.github.io/lector/)
 ![NVIDIA Nemotron VL](https://img.shields.io/badge/NVIDIA-Nemotron%20VL-76b900?style=flat-square&logo=nvidia&logoColor=white)
 ![Visión clásica](https://img.shields.io/badge/visi%C3%B3n%20cl%C3%A1sica-RANSAC%20%2B%20barrido%20radial-555?style=flat-square)
 ![Licencia](https://img.shields.io/badge/c%C3%B3digo-Apache--2.0-blue?style=flat-square)
@@ -33,7 +33,7 @@ flowchart LR
 
 1. **IA, una vez por instrumento.** Nemotron VL entrega cada número de la escala con su posición (0-1000) y además una estimación propia de la lectura.
 2. **Geometría.** Con tríos de números, RANSAC ajusta la circunferencia de la escala y una recta ángulo-valor. Los números que no calzan (una segunda escala, un logo) quedan fuera.
-3. **Visión clásica.** Un barrido radial de 720 direcciones busca la línea que sale continua del eje y llega más lejos hacia la escala. Así distingue la punta del contrapeso, que también es oscuro pero se corta antes. La tolerancia lateral va en píxeles para soportar un centro estimado con algo de error. La estimación de la IA no elige la aguja: solo sirve de control.
+3. **Visión clásica.** Un barrido radial de 720 direcciones busca la línea que sale continua del eje y llega más lejos hacia la escala. Así distingue la punta del contrapeso, que también es oscuro pero se corta antes. La tolerancia lateral va en píxeles para tolerar un centro estimado con algo de error. La estimación de la IA no elige la aguja: solo sirve de control.
 4. **Control cruzado.** Si la lectura geométrica y la de la IA difieren en más de 6 % del rango, la página avisa. El panel «¿La lectura está mal?» corrige y muestra el error de la lectura automática.
 5. **Cámara fija.** Con la cámara quieta, la IA calibra una sola vez y el seguimiento de la aguja corre en el navegador muchas veces por segundo, sin más llamadas.
 
@@ -47,7 +47,7 @@ flowchart LR
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` | La máquina completa: ajuste RANSAC, barrido radial, modo cámara fija, alarmas y registro. |
+| `index.html` | La herramienta completa: ajuste RANSAC, barrido radial, modo cámara fija, alarmas y registro. |
 | `s/` | Fotos de ejemplo con la lectura de escala guardada. |
 | `docs/` | GIF de la demo y diagramas. |
 
@@ -64,4 +64,4 @@ La primera versión del barrido también confundía el contrapeso con la punta e
 ---
 
 <sub>Proyecto personal de **Julián Neira Nova**, ingeniero eléctrico con 10 años en faena · Servicio y Soluciones Tecnológicas DelaCruz SpA. Nada de lo publicado proviene de clientes ni de empleadores.
-[Portafolio](https://jsnn15.github.io/) · [LinkedIn](https://www.linkedin.com/in/julian-neira-nova/) · [Todas las máquinas](https://github.com/JSNN15)</sub>
+[Portafolio](https://jsnn15.github.io/) · [LinkedIn](https://www.linkedin.com/in/julian-neira-nova/) · [Todas las herramientas](https://github.com/JSNN15)</sub>

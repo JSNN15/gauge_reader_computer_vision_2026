@@ -437,6 +437,11 @@
       [hidden] {
         display: none !important;
       }
+          .sub.demo {
+        margin-top: 8px;
+        font-size: 0.86rem;
+        opacity: 0.8;
+      }
     </style>
     <style id="jnbar-css">
       .jnb {
@@ -574,6 +579,7 @@
             Foto de un manómetro o termómetro de aguja. La IA lee los números de la escala, la geometría la reconstruye y la
             visión clásica encuentra la aguja.
           </p>
+          <p class="sub demo">Demo de portafolio: usa una API gratuita compartida, con cupo diario. Leer la escala toma unos segundos y a veces no hay cupo.</p>
         </div>
         <span class="nvb">escala leída por <b>NVIDIA Nemotron VL</b></span>
       </div>
@@ -1302,7 +1308,7 @@
           [...$('thumbs').children].forEach((t) => t.classList.toggle('on', t === b));
           const s = SAMPLES[+b.dataset.i];
           setSrc(await loadImg(s.img));
-          $('hint').textContent = 'Lectura de la escala guardada de la IA';
+          $('hint').textContent = 'Lectura de la escala hecha por la IA, guardada para este ejemplo';
           run(s.result);
         });
         const askNV = async (canvasEl) => {
