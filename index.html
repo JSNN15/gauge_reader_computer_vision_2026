@@ -17,10 +17,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <style>
       :root {
         --bg: #0a0b0d;
@@ -29,15 +26,15 @@
         --line: #252a33;
         --fg: #ebeef2;
         --muted: #959cab;
-        --acc: #ffb020;
+        --acc: #ff8e3c;
         --nv: #76b900;
         --red: #ff4d3d;
         --cy: #3fd5f0;
         --yel: #ffe066;
         --ok: #3ccf7a;
-        --display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
-        --sans: 'Work Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-        --mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+        --display: 'Geist', system-ui, sans-serif;
+        --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        --mono: 'Geist Mono', ui-monospace, Consolas, monospace;
         color-scheme: dark;
       }
       * {
@@ -99,11 +96,11 @@
       }
       h1 {
         font-family: var(--display);
-        font-weight: 800;
-        text-transform: uppercase;
-        font-size: clamp(2.2rem, 5vw, 3.6rem);
-        line-height: 0.9;
+        font-weight: 600;
+        font-size: clamp(2rem, 4.2vw, 3.1rem);
+        line-height: 1.04;
         margin: 0;
+        letter-spacing: -0.035em;
       }
       h1 em {
         font-style: normal;
@@ -288,10 +285,11 @@
       .val {
         font-family: var(--display);
         font-size: clamp(3.6rem, 8vw, 5.4rem);
-        line-height: 0.9;
-        font-weight: 800;
+        line-height: 1.04;
+        font-weight: 600;
         color: var(--fg);
         font-variant-numeric: tabular-nums;
+        letter-spacing: -0.02em;
       }
       .unit {
         font-family: var(--mono);
@@ -425,6 +423,7 @@
         font-size: 2rem;
         color: var(--acc);
         line-height: 1;
+        letter-spacing: -0.02em;
       }
       footer {
         border-top: 1px solid var(--line);
@@ -532,10 +531,10 @@
       ><span class="jnb-sp"></span
       ><a
         class="jnb-gh"
-        href="https://github.com/JSNN15/lector"
+        href="https://github.com/JSNN15/gauge_reader_computer_vision_2026"
         target="_blank"
         rel="noopener"
-        title="Ver el código de esta máquina en GitHub"
+        title="Ver el código en GitHub"
         ><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
           <path
             fill="currentColor"
@@ -558,18 +557,6 @@
       >
     </div>
     <!--/jnbar-->
-    <nav>
-      <div class="in">
-        <a class="brand" href="./"
-          ><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="17" r="12" fill="none" stroke="#ffb020" stroke-width="2.4" />
-            <path d="M16 17l6-7" stroke="#ff4d3d" stroke-width="2.6" stroke-linecap="round" />
-            <circle cx="16" cy="17" r="2.2" fill="#ffb020" /></svg
-          >Lector de instrumentos</a
-        >
-        <a class="s" href="../"><span class="lg">Julián Neira Nova · </span>Portafolio →</a>
-      </div>
-    </nav>
 
     <header>
       <div class="in">
@@ -579,7 +566,7 @@
             Foto de un manómetro o termómetro de aguja. La IA lee los números de la escala, la geometría la reconstruye y la
             visión clásica encuentra la aguja.
           </p>
-          <p class="sub demo">Demo de portafolio: usa una API gratuita compartida, con cupo diario. Leer la escala toma unos segundos y a veces no hay cupo.</p>
+          <p class="sub demo">Usa una API gratuita con cupo diario. Leer la escala toma unos segundos y a veces no hay cupo.</p>
         </div>
         <span class="nvb">escala leída por <b>NVIDIA Nemotron VL</b></span>
       </div>
@@ -1487,7 +1474,7 @@
           }
           if (!log.length) {
             tx.fillStyle = '#959cab';
-            tx.font = '12px IBM Plex Mono, monospace';
+            tx.font = '12px Geist Mono, monospace';
             tx.fillText('Sin lecturas todavía', 10, 20);
             return;
           }
@@ -1519,7 +1506,7 @@
               tx.setLineDash([]);
             }
           });
-          tx.strokeStyle = '#ffb020';
+          tx.strokeStyle = '#ff8e3c';
           tx.lineWidth = 2;
           tx.beginPath();
           log.forEach((p, i) => (i ? tx.lineTo(X(i), Y(p.v)) : tx.moveTo(X(i), Y(p.v))));
@@ -1527,11 +1514,11 @@
           log.forEach((p, i) => {
             tx.beginPath();
             tx.arc(X(i), Y(p.v), 3, 0, 7);
-            tx.fillStyle = (isFinite(hi) && p.v > hi) || (isFinite(lo) && p.v < lo) ? '#ff4d3d' : '#ffb020';
+            tx.fillStyle = (isFinite(hi) && p.v > hi) || (isFinite(lo) && p.v < lo) ? '#ff4d3d' : '#ff8e3c';
             tx.fill();
           });
           tx.fillStyle = '#959cab';
-          tx.font = '11px IBM Plex Mono, monospace';
+          tx.font = '11px Geist Mono, monospace';
           tx.fillText(nf(b - pad, 1), 4, 12);
           tx.fillText(nf(a + pad, 1), 4, H - 4);
         };
